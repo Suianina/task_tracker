@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "github",
+      "token": "YOUR_GITHUB_TOKEN",
+      "repositories": [
+        "Suianina/task_tracker"
+      ]
+    }
+  }
+}
+
+

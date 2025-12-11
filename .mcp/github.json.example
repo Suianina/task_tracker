@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "github",
+      "config": {
+        "token": "",
+        "repository": "your-github-username/your-repo-name"
+      }
+    }
+  }
+}
+
+
