@@ -5,14 +5,11 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
-  Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 import * as fs from 'fs';
 import * as path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Removed unused __dirname
 
 interface Task {
   id: string;
@@ -23,7 +20,6 @@ interface Task {
   updatedAt: number;
 }
 
-const STORAGE_KEY = 'task_tracker_tasks';
 const DEFAULT_STORAGE_PATH = path.join(process.cwd(), 'task-tracker-data.json');
 
 function getStoragePath(): string {

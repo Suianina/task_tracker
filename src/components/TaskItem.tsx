@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from '../types/Task';
+import type { Task, TaskStatus } from '../types/Task';
 
 interface TaskItemProps {
   task: Task;
@@ -45,16 +45,16 @@ export const TaskItem = ({ task, onEdit, onDelete, onStatusChange }: TaskItemPro
         <button
           onClick={() => onEdit(task)}
           className="btn btn-edit"
-          aria-label="Редагувати задачу"
+          aria-label="Edit task"
         >
-          Редагувати
+          Edit
         </button>
         <button
           onClick={() => onDelete(task.id)}
           className="btn btn-delete"
-          aria-label="Видалити задачу"
+          aria-label="Delete task"
         >
-          Видалити
+          Delete
         </button>
       </div>
     </div>

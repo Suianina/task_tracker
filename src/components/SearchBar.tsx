@@ -1,37 +1,32 @@
-import { useState } from 'react';
-
 interface SearchBarProps {
+  value: string;
   onSearch: (query: string) => void;
 }
 
-export const SearchBar = ({ onSearch }: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+export const SearchBar = ({ value, onSearch }: SearchBarProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchQuery(value);
-    onSearch(value);
+    const newValue = e.target.value;
+    onSearch(newValue);
   };
 
   const handleClear = () => {
-    setSearchQuery('');
-    onSearch('');
+    onSearch("");
   };
 
   return (
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Пошук задач за назвою або описом..."
-        value={searchQuery}
+        placeholder="Search tasks by title or description..."
+        value={value}
         onChange={handleChange}
         className="search-input"
       />
-      {searchQuery && (
+      {value && (
         <button
           onClick={handleClear}
           className="search-clear"
-          aria-label="Очистити пошук"
+          aria-label="Clear search"
         >
           ×
         </button>
@@ -39,4 +34,3 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
     </div>
   );
 };
-
