@@ -1,210 +1,186 @@
-# Task Tracker - Інструкція для команди
+# Task Tracker - Team Instructions
 
-## Короткий опис
+## 1. Brief Description
 
-**Task Tracker** — це простий веб-додаток для управління задачами, створений на React та TypeScript. Додаток дозволяє створювати, редагувати, видаляти та відстежувати статус ваших задач.
+### What is this application?
 
-### Для чого це потрібно?
+**Task Tracker** is a simple web application for task management, built with React and TypeScript. The application allows you to create, edit, delete, and track the status of your tasks.
 
-- Організація особистих або командних задач
-- Відстеження прогресу виконання задач
-- Просте та інтуїтивне управління задачами без необхідності складних налаштувань
+### What is it for?
 
-## Як встановити та запустити
+- Organization of personal or team tasks
+- Tracking task completion progress
+- Simple and intuitive task management without complex setup
+- Visual display of tasks by status (To Do / In Progress / Done)
 
-### Вимоги
+## 2. How to Install and Run
 
-Перед встановленням переконайтеся, що у вас встановлено:
+### Requirements
 
-- **Node.js** версії 18.0 або вище
-- **npm** (встановлюється разом з Node.js) або **yarn**
+Before installation, make sure you have installed:
 
-Перевірити версію можна командами:
+- **Node.js** version 18.0 or higher
+- **npm** (installed with Node.js) or **yarn**
+
+You can check the version with commands:
+
 ```bash
 node --version
 npm --version
 ```
 
-### Покрокова інструкція
+### Step-by-Step Instructions
 
-1. **Клонуйте репозиторій** (якщо працюєте з Git):
+1. **Clone the repository** (if working with Git):
+
    ```bash
    git clone <repository-url>
    cd task_tracker
    ```
 
-2. **Встановіть залежності**:
+2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
-3. **Запустіть сервер розробки**:
+3. **Start the development server**:
+
    ```bash
    npm run dev
    ```
 
-4. **Відкрийте браузер**:
-   - Після запуску в терміналі з'явиться URL (зазвичай `http://localhost:5173`)
-   - Відкрийте цей URL у вашому браузері
+4. **Open your browser**:
+   - After starting, a URL will appear in the terminal (usually `http://localhost:5173`)
+   - Open this URL in your browser
 
-5. **Для створення production збірки**:
-   ```bash
-   npm run build
-   ```
-
-6. **Для перегляду production збірки**:
-   ```bash
-   npm run preview
-   ```
-
-## Як використовувати
-
-### Як додати задачу
-
-1. Натисніть кнопку **"+ Додати нову задачу"** у верхній частині сторінки
-2. Заповніть форму:
-   - **Назва задачі** (обов'язкове поле) - введіть коротку назву задачі
-   - **Опис** (опціонально) - додайте детальний опис задачі
-   - **Статус** - виберіть початковий статус (To Do / In Progress / Done)
-3. Натисніть кнопку **"Додати задачу"**
-
-### Як змінити статус задачі
-
-Є два способи змінити статус задачі:
-
-**Спосіб 1: Використання випадаючого списку**
-- Знайдіть задачу в списку
-- Виберіть новий статус з випадаючого списку внизу картки задачі
-- Статус зміниться автоматично
-
-**Спосіб 2: Під час редагування**
-- Відкрийте форму редагування задачі
-- Змініть статус у відповідному полі
-- Збережіть зміни
-
-### Як редагувати задачу
-
-1. Знайдіть задачу, яку хочете редагувати
-2. Натисніть кнопку **"Редагувати"** на картці задачі
-3. Форма відкриється з заповненими даними задачі
-4. Внесіть необхідні зміни
-5. Натисніть кнопку **"Оновити задачу"**
-6. Або натисніть **"Скасувати"**, щоб відмінити зміни
-
-### Як видалити задачу
-
-1. Знайдіть задачу, яку хочете видалити
-2. Натисніть кнопку **"Видалити"** на картці задачі
-3. Підтвердіть видалення у діалоговому вікні
-4. Задача буде видалена безповоротно
-
-### Організація задач
-
-Задачі автоматично організовуються за статусами у три колонки:
-- **To Do** - задачі, які потрібно виконати
-- **In Progress** - задачі, які виконуються зараз
-- **Done** - виконані задачі
-
-Кожна колонка показує кількість задач у дужках.
-
-## FAQ (Часті питання)
-
-### Де зберігаються дані?
-
-Всі задачі зберігаються локально у вашому браузері в **localStorage**. Це означає:
-- Дані зберігаються тільки на вашому комп'ютері
-- Дані не синхронізуються між пристроями
-- Дані не передаються на сервер
-
-### Як скинути всі задачі?
-
-Наразі немає вбудованої функції для скидання всіх задач. Ви можете:
-1. Видалити дані через інструменти розробника браузера:
-   - Відкрийте DevTools (F12)
-   - Перейдіть на вкладку "Application" (Chrome) або "Storage" (Firefox)
-   - Знайдіть "Local Storage" → ваш домен
-   - Видаліть ключ `task_tracker_tasks`
-2. Або видаліть задачі вручну одну за одною
-
-### Чи можна експортувати задачі?
-
-Наразі функція експорту не реалізована. Всі дані доступні через localStorage у форматі JSON.
-
-### Чи працює додаток офлайн?
-
-Так! Оскільки дані зберігаються локально, додаток працює повністю офлайн після першого завантаження.
-
-### Чи можна використовувати на мобільних пристроях?
-
-Так, додаток має адаптивний дизайн і працює на мобільних пристроях. Просто відкрийте URL у мобільному браузері.
-
-### Як працює збереження даних?
-
-Дані автоматично зберігаються в localStorage при:
-- Додаванні нової задачі
-- Редагуванні задачі
-- Зміні статусу задачі
-- Видаленні задачі
-
-Немає необхідності натискати кнопку "Зберегти" - все зберігається автоматично.
-
-## Контакти для допомоги
-
-Якщо у вас виникли проблеми або питання:
-
-1. **Перевірте документацію**: Прочитайте цю інструкцію та інші документи в репозиторії
-2. **Перевірте Issues**: Подивіться, чи не обговорювалась ваша проблема раніше
-3. **Створіть Issue**: Якщо проблема не вирішена, створіть нове issue з описом проблеми
-4. **Зв'яжіться з командою**: Напишіть команді розробки через відповідні канали комунікації
-
-### При створенні Issue вкажіть:
-- Версію Node.js (`node --version`)
-- Версію npm (`npm --version`)
-- Операційну систему
-- Опис проблеми та кроки для відтворення
-- Скріншоти (якщо доречно)
-
-## Додаткова інформація
-
-### Команди для розробки
+### Commands to Run
 
 ```bash
-# Запуск сервера розробки
+# Start development server
 npm run dev
 
-# Створення production збірки
+# Create production build
 npm run build
 
-# Перегляд production збірки
+# Preview production build
 npm run preview
 
-# Перевірка коду (linting)
+# Code check (linting)
 npm run lint
 ```
 
-### Технології
+## 3. How to Use
 
-- **React 19** - бібліотека для створення UI
-- **TypeScript** - типізована надмножина JavaScript
-- **Vite** - інструмент збірки та розробки
-- **CSS** - стилізація (без додаткових бібліотек)
+### How to Add a Task
 
-### Структура проєкту
+1. Click the **"+ Add New Task"** button at the top of the page
+2. Fill out the form:
+   - **Task Title** (required field) - enter a short task name
+   - **Description** (optional) - add a detailed task description
+   - **Status** - select the initial status (To Do / In Progress / Done)
+3. Click the **"Add Task"** button
 
-```
-task_tracker/
-├── src/
-│   ├── components/     # React компоненти
-│   ├── types/          # TypeScript типи
-│   ├── utils/          # Допоміжні функції
-│   ├── App.tsx         # Головний компонент
-│   └── main.tsx        # Точка входу
-├── public/             # Статичні файли
-├── package.json        # Залежності проєкту
-└── README.md           # Основна документація
-```
+### How to Change Status
+
+There are two ways to change a task's status:
+
+**Method 1: Using the dropdown list**
+
+- Find the task in the list
+- Select a new status from the dropdown list at the bottom of the task card
+- The status will change automatically
+
+**Method 2: During editing**
+
+- Open the task editing form
+- Change the status in the corresponding field
+- Save the changes
+
+### How to Edit a Task
+
+1. Find the task you want to edit
+2. Click the **"Edit"** button on the task card
+3. The form will open with the task data filled in
+4. Make the necessary changes
+5. Click the **"Update Task"** button
+6. Or click **"Cancel"** to cancel the changes
+
+### How to Delete a Task
+
+1. Find the task you want to delete
+2. Click the **"Delete"** button on the task card
+3. Confirm deletion in the dialog window
+4. The task will be permanently deleted
+
+### Task Search
+
+- Use the search field at the top of the page
+- Enter text to search by task title or description
+- Results are filtered automatically as you type
+
+### Task Organization
+
+Tasks are automatically organized by status into three columns:
+
+- **To Do** - tasks that need to be completed
+- **In Progress** - tasks currently in progress
+- **Done** - completed tasks
+
+Each column shows the number of tasks in parentheses.
+
+## 4. FAQ (Frequently Asked Questions)
+
+### Where is data stored?
+
+All tasks are stored locally in your browser's **localStorage**. This means:
+
+- Data is stored only on your computer
+- Data is not synchronized between devices
+- Data is not sent to a server
+- Data is saved automatically with every change
+
+### How to reset all tasks?
+
+Currently, there is no built-in function to reset all tasks. You can:
+
+1. Delete data through browser developer tools:
+   - Open DevTools (F12)
+   - Go to the "Application" tab (Chrome) or "Storage" tab (Firefox)
+   - Find "Local Storage" → your domain
+   - Delete the `task_tracker_tasks` key
+2. Or delete tasks manually one by one
+
+### Can I export tasks?
+
+Currently, the export function is not implemented. All data is available through localStorage in JSON format.
+
+### Does the application work offline?
+
+Yes! Since data is stored locally, the application works completely offline after the first load.
+
+### Can I use it on mobile devices?
+
+Yes, the application has a responsive design and works on mobile devices. Simply open the URL in a mobile browser.
+
+## 5. Contacts for Help
+
+If you encounter problems or have questions:
+
+1. **Check the documentation**: Read this instruction and other documents in the repository (README.md, DEVELOPMENT_PROCESS.md)
+2. **Check Issues**: See if your problem has been discussed before on GitHub
+3. **Create an Issue**: If the problem is not resolved, create a new issue with a description of the problem
+4. **Contact the team**: Write to the development team through the appropriate communication channels
+
+### When creating an Issue, please specify:
+
+- Node.js version (`node --version`)
+- npm version (`npm --version`)
+- Operating system
+- Problem description and steps to reproduce
+- Screenshots (if applicable)
+- Browser console errors (if any)
 
 ---
 
-**Приємного використання Task Tracker!** 🚀
-
+**Enjoy using Task Tracker!** 🚀
