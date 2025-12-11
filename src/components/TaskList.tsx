@@ -1,5 +1,5 @@
-import type { Task, TaskStatus } from '../types/Task';
-import { TaskItem } from './TaskItem';
+import type { Task, TaskStatus } from "../types/Task";
+import { TaskItem } from "./TaskItem";
 
 interface TaskListProps {
   tasks: Task[];
@@ -8,7 +8,12 @@ interface TaskListProps {
   onStatusChange: (id: string, status: TaskStatus) => void;
 }
 
-export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListProps) => {
+export const TaskList = ({
+  tasks,
+  onEdit,
+  onDelete,
+  onStatusChange,
+}: TaskListProps) => {
   if (tasks.length === 0) {
     return (
       <div className="empty-state">
@@ -18,14 +23,14 @@ export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListPr
   }
 
   const tasksByStatus = {
-    'To Do': tasks.filter((t) => t.status === 'To Do'),
-    'In Progress': tasks.filter((t) => t.status === 'In Progress'),
-    'Done': tasks.filter((t) => t.status === 'Done'),
+    "To Do": tasks.filter((t) => t.status === "To Do"),
+    "In Progress": tasks.filter((t) => t.status === "In Progress"),
+    Done: tasks.filter((t) => t.status === "Done"),
   };
 
   return (
     <div className="task-list">
-      {(['To Do', 'In Progress', 'Done'] as TaskStatus[]).map((status) => (
+      {(["To Do", "In Progress", "Done"] as TaskStatus[]).map((status) => (
         <div key={status} className="task-column">
           <h2 className="column-title">
             {status} ({tasksByStatus[status].length})
@@ -46,4 +51,3 @@ export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListPr
     </div>
   );
 };
-

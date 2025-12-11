@@ -25,9 +25,13 @@ function App() {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => {
+      const updatedTasks = [...prevTasks, newTask];
+      return updatedTasks;
+    });
     setEditingTask(null);
     setShowForm(false);
+    setSearchQuery("");
   };
 
   const handleUpdateTask = (
