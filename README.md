@@ -1,128 +1,131 @@
 # Task Tracker
 
-Простий веб-додаток для управління задачами, створений на React та TypeScript.
+A simple web application for task management built with React and TypeScript.
 
-## 📋 Опис
+## 📋 Description
 
-Task Tracker дозволяє створювати, редагувати, видаляти та відстежувати статус ваших задач. Додаток працює повністю локально, зберігаючи дані у браузері через localStorage.
+Task Tracker allows you to create, edit, delete, and track the status of your tasks. The application works completely locally, storing data in the browser through localStorage.
 
-## ✨ Функціонал
+## ✨ Features
 
-- ✅ **Список задач** - відображення задач з організацією за статусами (To Do / In Progress / Done)
-- ➕ **Додавання задач** - створення нових задач з назвою, описом та статусом
-- ✏️ **Редагування задач** - зміна назви, опису та статусу існуючих задач
-- 🗑️ **Видалення задач** - видалення задач з підтвердженням
-- 🔄 **Зміна статусу** - швидка зміна статусу через випадаючий список
-- 💾 **Автоматичне збереження** - всі дані автоматично зберігаються в localStorage
+- ✅ **Task List** - Display tasks organized by status (To Do / In Progress / Done)
+- ➕ **Add Tasks** - Create new tasks with title, description, and status
+- ✏️ **Edit Tasks** - Modify title, description, and status of existing tasks
+- 🗑️ **Delete Tasks** - Delete tasks with confirmation
+- 🔄 **Status Change** - Quick status change via dropdown
+- 🔍 **Search** - Search tasks by title or description
+- 💾 **Auto-save** - All data is automatically saved in localStorage
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### Вимоги
+### Requirements
 
-- Node.js 18.0 або вище
-- npm або yarn
+- Node.js 18.0 or higher
+- npm or yarn
 
-### Встановлення
+### Installation
 
 ```bash
-# Клонуйте репозиторій
+# Clone the repository
 git clone <repository-url>
 cd task_tracker
 
-# Встановіть залежності
+# Install dependencies
 npm install
 
-# Запустіть сервер розробки
+# Start development server
 npm run dev
 ```
 
-Відкрийте браузер за адресою, яка з'явиться в терміналі (зазвичай `http://localhost:5173`).
+Open your browser at the URL shown in the terminal (usually `http://localhost:5173`).
 
-### Команди
+### Commands
 
 ```bash
-# Розробка
+# Development
 npm run dev
 
-# Production збірка
+# Production build
 npm run build
 
-# Перегляд production збірки
+# Preview production build
 npm run preview
 
-# Перевірка коду
+# Code linting
 npm run lint
 ```
 
-## 📚 Документація
+## 📚 Documentation
 
-- **[TASK_TRACKER_INSTRUCTIONS.md](./TASK_TRACKER_INSTRUCTIONS.md)** - Детальна інструкція для команди
-- **[AI_WORKFLOW_DOCUMENTATION.md](./AI_WORKFLOW_DOCUMENTATION.md)** - Документація процесу розробки з AI
-- **[DEVELOPMENT_PROCESS.md](./DEVELOPMENT_PROCESS.md)** - Опис процесу розробки
-- **[MCP_INTEGRATION.md](./MCP_INTEGRATION.md)** - Документація по інтеграції MCP Server
-- **[MCP_SERVER_DOCUMENTATION.md](./MCP_SERVER_DOCUMENTATION.md)** - Повна документація MCP Server
+- **[TASK_TRACKER_INSTRUCTIONS.md](./TASK_TRACKER_INSTRUCTIONS.md)** - Detailed instructions for the team
+- **[AI_WORKFLOW_DOCUMENTATION.md](./AI_WORKFLOW_DOCUMENTATION.md)** - AI development process documentation
+- **[DEVELOPMENT_PROCESS.md](./DEVELOPMENT_PROCESS.md)** - Development process description
+- **[MCP_INTEGRATION.md](./MCP_INTEGRATION.md)** - MCP Server integration documentation
+- **[MCP_SERVER_DOCUMENTATION.md](./MCP_SERVER_DOCUMENTATION.md)** - Complete MCP Server documentation
 
-## 🛠️ Технології
+## 🛠️ Technologies
 
-- **React 19** - бібліотека для створення UI
-- **TypeScript** - типізована надмножина JavaScript
-- **Vite** - інструмент збірки та розробки
-- **CSS** - стилізація (без додаткових бібліотек)
+- **React 19** - UI library
+- **TypeScript** - Typed JavaScript superset
+- **Vite** - Build tool and development server
+- **CSS** - Styling (no additional libraries)
 
-## 📁 Структура проєкту
+## 📁 Project Structure
 
 ```
 task_tracker/
 ├── src/
-│   ├── components/          # React компоненти
-│   │   ├── TaskForm.tsx     # Форма додавання/редагування
-│   │   ├── TaskItem.tsx     # Компонент окремої задачі
-│   │   └── TaskList.tsx     # Компонент списку задач
-│   ├── types/               # TypeScript типи
-│   │   └── Task.ts          # Типи для задач
-│   ├── utils/               # Допоміжні функції
-│   │   └── storage.ts       # Утиліти для localStorage
-│   ├── App.tsx              # Головний компонент
-│   ├── App.css              # Стилі додатку
-│   ├── main.tsx             # Точка входу
-│   └── index.css            # Глобальні стилі
-├── public/                  # Статичні файли
-├── package.json             # Залежності проєкту
-└── README.md                # Основна документація
+│   ├── components/          # React components
+│   │   ├── TaskForm.tsx     # Add/Edit form
+│   │   ├── TaskItem.tsx     # Individual task component
+│   │   ├── TaskList.tsx     # Task list component
+│   │   └── SearchBar.tsx   # Search component
+│   ├── types/               # TypeScript types
+│   │   └── Task.ts          # Task types
+│   ├── utils/               # Utility functions
+│   │   └── storage.ts       # localStorage utilities
+│   ├── App.tsx              # Main component
+│   ├── App.css              # App styles
+│   ├── main.tsx             # Entry point
+│   └── index.css            # Global styles
+├── public/                  # Static files
+├── mcp-server/             # MCP Server for automation
+├── package.json             # Project dependencies
+└── README.md                # Main documentation
 ```
 
-## 💾 Зберігання даних
+## 💾 Data Storage
 
-Всі задачі зберігаються локально у браузері через **localStorage**. Дані не передаються на сервер та доступні тільки на вашому пристрої.
+All tasks are stored locally in the browser through **localStorage**. Data is not sent to the server and is only available on your device.
 
-## 🎨 Особливості дизайну
+## 🎨 Design Features
 
-- Сучасний градієнтний фон
-- Кольорові індикатори статусів
-- Адаптивний дизайн для мобільних пристроїв
-- Плавні анімації та hover ефекти
-- Організація задач у три колонки за статусами
+- Modern gradient background
+- Color-coded status indicators
+- Responsive design for mobile devices
+- Smooth animations and hover effects
+- Tasks organized in three columns by status
 
-## 📝 Ліцензія
+## 📝 License
 
-Цей проєкт створено в рамках тестового завдання.
+This project was created as part of a test assignment.
 
-## 🤝 Внесок
+## 🤝 Contributing
 
-Якщо ви хочете покращити проєкт:
-1. Створіть fork репозиторію
-2. Створіть feature branch (`git checkout -b feature/AmazingFeature`)
-3. Зробіть commit змін (`git commit -m 'Add some AmazingFeature'`)
-4. Push до branch (`git push origin feature/AmazingFeature`)
-5. Відкрийте Pull Request
+If you want to improve the project:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📞 Підтримка
+## 📞 Support
 
-Якщо у вас виникли питання або проблеми, будь ласка:
-- Перевірте [інструкцію](./TASK_TRACKER_INSTRUCTIONS.md)
-- Створіть Issue в репозиторії
-- Зв'яжіться з командою розробки
+If you have questions or issues, please:
+- Check the [instructions](./TASK_TRACKER_INSTRUCTIONS.md)
+- Create an Issue in the repository
+- Contact the development team
 
 ---
 
-**Приємного використання Task Tracker!** 🚀
+**Enjoy using Task Tracker!** 🚀
