@@ -1,6 +1,6 @@
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(to right, #1e293b 0%, #6366f1 100%);
   padding: 2rem 1rem;
 }
 
@@ -48,7 +48,7 @@
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.3s ease;
-  background: white;
+  background: #d1d5db;
 }
 
 .search-input:focus {
@@ -110,25 +110,25 @@
 }
 
 .btn-edit {
-  background-color: #f59e0b;
+  background-color: #1e40af;
   color: white;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
 }
 
 .btn-edit:hover {
-  background-color: #d97706;
+  background-color: #1e3a8a;
 }
 
 .btn-delete {
-  background-color: #ef4444;
+  background-color: #991b1b;
   color: white;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
 }
 
 .btn-delete:hover {
-  background-color: #dc2626;
+  background-color: #7f1d1d;
 }
 
 .btn-add {
@@ -139,7 +139,7 @@
 }
 
 .form-container {
-  background: white;
+  background: #d1d5db;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -201,7 +201,7 @@
 }
 
 .task-column {
-  background: white;
+  background: #d1d5db;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -224,7 +224,7 @@
 }
 
 .task-item {
-  background: #f9fafb;
+  background: #9ca3af;
   border-radius: 8px;
   padding: 1rem;
   border-left: 4px solid #9ca3af;
@@ -233,7 +233,7 @@
 
 .task-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .task-item.status-todo {
@@ -308,7 +308,7 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 0.9rem;
-  background-color: white;
+  background-color: #d1d5db;
   cursor: pointer;
 }
 
@@ -321,7 +321,7 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 3rem;
-  background: white;
+  background: #d1d5db;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
