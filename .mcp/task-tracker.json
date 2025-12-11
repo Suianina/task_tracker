@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "task-tracker": {
+      "command": "node",
+      "args": ["C:/Projects/task_tracker/mcp-server/dist/index.js"],
+      "env": {
+        "TASK_TRACKER_STORAGE_PATH": "C:/Projects/task_tracker/task-tracker-data.json"
+      }
+    }
+  }
+}

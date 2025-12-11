@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import type { Task, TaskStatus } from "./types/Task";
+import { Task, TaskStatus } from "./types/Task";
 import { TaskForm } from "./components/TaskForm";
 import { TaskList } from "./components/TaskList";
 import { SearchBar } from "./components/SearchBar";
@@ -7,10 +7,15 @@ import { loadTasks, saveTasks } from "./utils/storage";
 import "./App.css";
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>(() => loadTasks());
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const loadedTasks = loadTasks();
+    setTasks(loadedTasks);
+  }, []);
 
   useEffect(() => {
     saveTasks(tasks);
@@ -21,25 +26,20 @@ function App() {
   ) => {
     const newTask: Task = {
       ...taskData,
-      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: Date.now().toString(),
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks, newTask];
-      return updatedTasks;
-    });
-    setEditingTask(null);
+    setTasks([...tasks, newTask]);
     setShowForm(false);
-    setSearchQuery("");
   };
 
   const handleUpdateTask = (
     taskData: Omit<Task, "id" | "createdAt" | "updatedAt">
   ) => {
     if (editingTask) {
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
+      setTasks(
+        tasks.map((task) =>
           task.id === editingTask.id
             ? { ...task, ...taskData, updatedAt: Date.now() }
             : task
@@ -47,7 +47,6 @@ function App() {
       );
       setEditingTask(null);
       setShowForm(false);
-      setSearchQuery("");
     }
   };
 
@@ -58,13 +57,13 @@ function App() {
 
   const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this task?")) {
-      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      setTasks(tasks.filter((task) => task.id !== id));
     }
   };
 
   const handleStatusChange = (id: string, status: TaskStatus) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
+    setTasks(
+      tasks.map((task) =>
         task.id === id ? { ...task, status, updatedAt: Date.now() } : task
       )
     );

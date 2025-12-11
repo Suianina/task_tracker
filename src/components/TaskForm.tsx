@@ -1,41 +1,25 @@
-import { useState, useEffect } from "react";
-import type { FormEvent } from "react";
-import type { Task, TaskStatus } from "../types/Task";
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import type { Task, TaskStatus } from '../types/Task';
 
 interface TaskFormProps {
   task?: Task;
-  onSubmit: (task: Omit<Task, "id" | "createdAt" | "updatedAt">) => void;
+  onSubmit: (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => void;
   onCancel?: () => void;
 }
 
 export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
-  const [title, setTitle] = useState(task?.title || "");
-  const [description, setDescription] = useState(task?.description || "");
-  const [status, setStatus] = useState<TaskStatus>(task?.status || "To Do");
-
-  useEffect(() => {
-    if (task) {
-      setTitle(task.title);
-      setDescription(task.description);
-      setStatus(task.status);
-    } else {
-      setTitle("");
-      setDescription("");
-      setStatus("To Do");
-    }
-  }, [task]);
+  const [title, setTitle] = useState(task?.title || '');
+  const [description, setDescription] = useState(task?.description || '');
+  const [status, setStatus] = useState<TaskStatus>(task?.status || 'To Do');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (title.trim()) {
-      onSubmit({
-        title: title.trim(),
-        description: description.trim(),
-        status,
-      });
-      setTitle("");
-      setDescription("");
-      setStatus("To Do");
+      onSubmit({ title: title.trim(), description: description.trim(), status });
+      setTitle('');
+      setDescription('');
+      setStatus('To Do');
     }
   };
 
@@ -76,14 +60,10 @@ export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
       </div>
       <div className="form-actions">
         <button type="submit" className="btn btn-primary">
-          {task ? "Update" : "Add"} Task
+          {task ? 'Update' : 'Add'} Task
         </button>
         {onCancel && (
-          <button
-            type="button"
-            onClick={onCancel}
-            className="btn btn-secondary"
-          >
+          <button type="button" onClick={onCancel} className="btn btn-secondary">
             Cancel
           </button>
         )}
@@ -91,3 +71,4 @@ export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
     </form>
   );
 };
+
