@@ -18,7 +18,7 @@ Task Tracker allows you to create, edit, delete, and track the status of your ta
 
 ## 📸 Screenshot
 
-![Task Tracker Application](https://raw.githubusercontent.com/Suianina/task_tracker/dev/docs/task-tracker-screenshot.png)
+![Task Tracker Application](./docs/task-tracker-screenshot.png)
 
 *Task Tracker - Main interface with three status columns, search functionality, and modern gradient design*
 
