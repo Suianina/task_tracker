@@ -47,6 +47,7 @@ function App() {
       );
       setEditingTask(null);
       setShowForm(false);
+      setSearchQuery("");
     }
   };
 
