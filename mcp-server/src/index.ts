@@ -9,8 +9,6 @@ import {
 import * as fs from "fs";
 import * as path from "path";
 
-// Removed unused __dirname
-
 interface Task {
   id: string;
   title: string;
@@ -63,7 +61,6 @@ const server = new Server(
   }
 );
 
-// List available tools
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
@@ -151,7 +148,6 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   };
 });
 
-// Handle tool calls
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
