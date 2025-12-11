@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Task, TaskStatus } from './types/Task';
 import { TaskForm } from './components/TaskForm';
 import { TaskList } from './components/TaskList';
+import { SearchBar } from './components/SearchBar';
 import { loadTasks, saveTasks } from './utils/storage';
 import './App.css';
 
@@ -9,6 +10,7 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const loadedTasks = loadTasks();
@@ -68,6 +70,21 @@ function App() {
     setShowForm(false);
   };
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query.toLowerCase().trim());
+  };
+
+  const filteredTasks = useMemo(() => {
+    if (!searchQuery) {
+      return tasks;
+    }
+    return tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(searchQuery) ||
+        task.description.toLowerCase().includes(searchQuery)
+    );
+  }, [tasks, searchQuery]);
+
   return (
     <div className="app">
       <header className="app-header">
@@ -77,12 +94,15 @@ function App() {
       <main className="app-main">
         <div className="controls">
           {!showForm ? (
-            <button
-              onClick={() => setShowForm(true)}
-              className="btn btn-primary btn-add"
-            >
-              + Додати нову задачу
-            </button>
+            <>
+              <SearchBar onSearch={handleSearch} />
+              <button
+                onClick={() => setShowForm(true)}
+                className="btn btn-primary btn-add"
+              >
+                + Додати нову задачу
+              </button>
+            </>
           ) : (
             <div className="form-container">
               <h2>{editingTask ? 'Редагувати задачу' : 'Нова задача'}</h2>
@@ -95,7 +115,7 @@ function App() {
           )}
         </div>
         <TaskList
-          tasks={tasks}
+          tasks={filteredTasks}
           onEdit={handleEdit}
           onDelete={handleDelete}
           onStatusChange={handleStatusChange}
