@@ -69,22 +69,22 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     tools: [
       {
         name: 'create_task',
-        description: 'Створює нову задачу в Task Tracker',
+        description: 'Creates a new task in Task Tracker',
         inputSchema: {
           type: 'object',
           properties: {
             title: {
               type: 'string',
-              description: 'Назва задачі',
+              description: 'Task title',
             },
             description: {
               type: 'string',
-              description: 'Опис задачі (опціонально)',
+              description: 'Task description (optional)',
             },
             status: {
               type: 'string',
               enum: ['To Do', 'In Progress', 'Done'],
-              description: 'Статус задачі',
+              description: 'Task status',
               default: 'To Do',
             },
           },
@@ -93,32 +93,32 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'list_tasks',
-        description: 'Отримує список всіх задач з можливістю фільтрації за статусом',
+        description: 'Retrieves a list of all tasks with optional status filtering',
         inputSchema: {
           type: 'object',
           properties: {
             status: {
               type: 'string',
               enum: ['To Do', 'In Progress', 'Done'],
-              description: 'Фільтр за статусом (опціонально)',
+              description: 'Filter by status (optional)',
             },
           },
         },
       },
       {
         name: 'update_task_status',
-        description: 'Оновлює статус задачі за ID',
+        description: 'Updates task status by ID',
         inputSchema: {
           type: 'object',
           properties: {
             taskId: {
               type: 'string',
-              description: 'ID задачі',
+              description: 'Task ID',
             },
             status: {
               type: 'string',
               enum: ['To Do', 'In Progress', 'Done'],
-              description: 'Новий статус',
+              description: 'New status',
             },
           },
           required: ['taskId', 'status'],
@@ -126,13 +126,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'delete_task',
-        description: 'Видаляє задачу за ID',
+        description: 'Deletes a task by ID',
         inputSchema: {
           type: 'object',
           properties: {
             taskId: {
               type: 'string',
-              description: 'ID задачі для видалення',
+              description: 'Task ID to delete',
             },
           },
           required: ['taskId'],
@@ -140,7 +140,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'get_task_statistics',
-        description: 'Отримує статистику по задачах (кількість за статусами)',
+        description: 'Retrieves task statistics (count by status)',
         inputSchema: {
           type: 'object',
           properties: {},
@@ -172,7 +172,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: 'text',
-              text: `Задачу "${newTask.title}" успішно створено з ID: ${newTask.id}`,
+              text: `Task "${newTask.title}" successfully created with ID: ${newTask.id}`,
             },
           ],
         };
@@ -201,7 +201,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             content: [
               {
                 type: 'text',
-                text: `Задачу з ID ${args.taskId} не знайдено`,
+                text: `Task with ID ${args.taskId} not found`,
               },
             ],
             isError: true,
@@ -214,7 +214,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: 'text',
-              text: `Статус задачі "${tasks[taskIndex].title}" оновлено на "${args.status}"`,
+              text: `Task "${tasks[taskIndex].title}" status updated to "${args.status}"`,
             },
           ],
         };
@@ -228,7 +228,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             content: [
               {
                 type: 'text',
-                text: `Задачу з ID ${args.taskId} не знайдено`,
+                text: `Task with ID ${args.taskId} not found`,
               },
             ],
             isError: true,
@@ -241,7 +241,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: 'text',
-              text: `Задачу "${deletedTask.title}" успішно видалено`,
+              text: `Task "${deletedTask.title}" successfully deleted`,
             },
           ],
         };
@@ -270,7 +270,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: 'text',
-              text: `Невідомий інструмент: ${name}`,
+              text: `Unknown tool: ${name}`,
             },
           ],
           isError: true,
@@ -281,7 +281,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       content: [
         {
           type: 'text',
-          text: `Помилка: ${error instanceof Error ? error.message : String(error)}`,
+          text: `Error: ${error instanceof Error ? error.message : String(error)}`,
         },
       ],
       isError: true,
