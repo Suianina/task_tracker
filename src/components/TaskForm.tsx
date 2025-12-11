@@ -1,5 +1,6 @@
-import { useState, FormEvent } from 'react';
-import { Task, TaskStatus } from '../types/Task';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import type { Task, TaskStatus } from '../types/Task';
 
 interface TaskFormProps {
   task?: Task;
@@ -25,28 +26,28 @@ export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="task-form">
       <div className="form-group">
-        <label htmlFor="title">Назва задачі *</label>
+        <label htmlFor="title">Task Title *</label>
         <input
           id="title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Введіть назву задачі"
+          placeholder="Enter task title"
           required
         />
       </div>
       <div className="form-group">
-        <label htmlFor="description">Опис</label>
+        <label htmlFor="description">Description</label>
         <textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Введіть опис задачі"
+          placeholder="Enter task description"
           rows={3}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="status">Статус</label>
+        <label htmlFor="status">Status</label>
         <select
           id="status"
           value={status}
@@ -59,11 +60,11 @@ export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
       </div>
       <div className="form-actions">
         <button type="submit" className="btn btn-primary">
-          {task ? 'Оновити' : 'Додати'} задачу
+          {task ? 'Update' : 'Add'} Task
         </button>
         {onCancel && (
           <button type="button" onClick={onCancel} className="btn btn-secondary">
-            Скасувати
+            Cancel
           </button>
         )}
       </div>

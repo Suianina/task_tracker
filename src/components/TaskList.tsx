@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from '../types/Task';
+import type { Task, TaskStatus } from '../types/Task';
 import { TaskItem } from './TaskItem';
 
 interface TaskListProps {
@@ -12,7 +12,7 @@ export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListPr
   if (tasks.length === 0) {
     return (
       <div className="empty-state">
-        <p>Немає задач. Додайте першу задачу!</p>
+        <p>No tasks. Add your first task!</p>
       </div>
     );
   }
@@ -33,7 +33,7 @@ export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListPr
           <div className="tasks-container">
             {tasksByStatus[status].map((task) => (
               <TaskItem
-                key={task.id}
+                key={`${status}-${task.id}`}
                 task={task}
                 onEdit={onEdit}
                 onDelete={onDelete}
