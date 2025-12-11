@@ -21,11 +21,11 @@ function App() {
   ) => {
     const newTask: Task = {
       ...taskData,
-      id: Date.now().toString(),
+      id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    setTasks([...tasks, newTask]);
+    setTasks((prevTasks) => [...prevTasks, newTask]);
     setShowForm(false);
   };
 
@@ -33,8 +33,8 @@ function App() {
     taskData: Omit<Task, "id" | "createdAt" | "updatedAt">
   ) => {
     if (editingTask) {
-      setTasks(
-        tasks.map((task) =>
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
           task.id === editingTask.id
             ? { ...task, ...taskData, updatedAt: Date.now() }
             : task
@@ -52,13 +52,13 @@ function App() {
 
   const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this task?")) {
-      setTasks(tasks.filter((task) => task.id !== id));
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     }
   };
 
   const handleStatusChange = (id: string, status: TaskStatus) => {
-    setTasks(
-      tasks.map((task) =>
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
         task.id === id ? { ...task, status, updatedAt: Date.now() } : task
       )
     );

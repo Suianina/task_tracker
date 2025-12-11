@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
 import type { Task, TaskStatus } from '../types/Task';
 
@@ -12,6 +12,18 @@ export const TaskForm = ({ task, onSubmit, onCancel }: TaskFormProps) => {
   const [title, setTitle] = useState(task?.title || '');
   const [description, setDescription] = useState(task?.description || '');
   const [status, setStatus] = useState<TaskStatus>(task?.status || 'To Do');
+
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title);
+      setDescription(task.description);
+      setStatus(task.status);
+    } else {
+      setTitle('');
+      setDescription('');
+      setStatus('To Do');
+    }
+  }, [task]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
