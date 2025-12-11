@@ -1,22 +1,22 @@
 # Task Tracker MCP Server
 
-MCP Server для автоматизації роботи з Task Tracker додатком.
+MCP Server for automating Task Tracker application operations.
 
-## Опис
+## Description
 
-Цей MCP Server дозволяє AI-інструментам (таким як Claude в Cursor) автоматично керувати задачами в Task Tracker через стандартизований протокол MCP.
+This MCP Server allows AI tools (such as Claude in Cursor) to automatically manage tasks in Task Tracker through the standardized MCP protocol.
 
-## Функціонал
+## Features
 
-MCP Server надає наступні інструменти:
+The MCP Server provides the following tools:
 
-1. **create_task** - Створення нової задачі
-2. **list_tasks** - Отримання списку задач (з опціональною фільтрацією)
-3. **update_task_status** - Оновлення статусу задачі
-4. **delete_task** - Видалення задачі
-5. **get_task_statistics** - Отримання статистики по задачах
+1. **create_task** - Create a new task
+2. **list_tasks** - Get a list of tasks (with optional filtering)
+3. **update_task_status** - Update task status
+4. **delete_task** - Delete a task
+5. **get_task_statistics** - Get task statistics
 
-## Встановлення
+## Installation
 
 ```bash
 cd mcp-server
@@ -24,58 +24,58 @@ npm install
 npm run build
 ```
 
-## Налаштування в Cursor
+## Configuration in Cursor
 
-Додайте наступну конфігурацію в налаштування Cursor:
+Add the following configuration to Cursor settings:
 
 ```json
 {
   "mcpServers": {
     "task-tracker": {
       "command": "node",
-      "args": ["/шлях/до/mcp-server/dist/index.js"],
+      "args": ["/path/to/mcp-server/dist/index.js"],
       "env": {
-        "TASK_TRACKER_STORAGE_PATH": "/шлях/до/файлу/з/даними.json"
+        "TASK_TRACKER_STORAGE_PATH": "/path/to/data/file.json"
       }
     }
   }
 }
 ```
 
-**Примітка**: Якщо `TASK_TRACKER_STORAGE_PATH` не вказано, дані будуть зберігатися в `task-tracker-data.json` у поточній робочій директорії.
+**Note**: If `TASK_TRACKER_STORAGE_PATH` is not specified, data will be stored in `task-tracker-data.json` in the current working directory.
 
-## Використання
+## Usage
 
-Після налаштування ви можете використовувати MCP Server через AI-інструменти:
+After configuration, you can use the MCP Server through AI tools:
 
-### Приклад 1: Створення задачі
-
-```
-Створи задачу "Реалізувати drag-and-drop" з описом "Додати можливість перетягування задач між колонками"
-```
-
-### Приклад 2: Отримання статистики
+### Example 1: Creating a Task
 
 ```
-Покажи статистику по задачах
+Create a task "Implement drag-and-drop" with description "Add ability to drag tasks between columns"
 ```
 
-### Приклад 3: Оновлення статусу
+### Example 2: Getting Statistics
 
 ```
-Онови статус задачі з ID "1234567890" на "In Progress"
+Show task statistics
 ```
 
-## Формат даних
+### Example 3: Updating Status
 
-Дані зберігаються у форматі JSON:
+```
+Update task with ID "1234567890" to status "In Progress"
+```
+
+## Data Format
+
+Data is stored in JSON format:
 
 ```json
 [
   {
     "id": "1234567890",
-    "title": "Назва задачі",
-    "description": "Опис задачі",
+    "title": "Task title",
+    "description": "Task description",
     "status": "To Do",
     "createdAt": 1234567890,
     "updatedAt": 1234567890
@@ -83,20 +83,19 @@ npm run build
 ]
 ```
 
-## Розробка
+## Development
 
 ```bash
-# Збірка
+# Build
 npm run build
 
-# Розробка з автоперезавантаженням
+# Development with auto-reload
 npm run dev
 
-# Запуск
+# Run
 npm start
 ```
 
-## Ліцензія
+## License
 
 MIT
-

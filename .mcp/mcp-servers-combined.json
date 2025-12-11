@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN_HERE"
+      }
+    },
+    "task-tracker": {
+      "command": "node",
+      "args": ["C:/Projects/task_tracker/mcp-server/dist/index.js"],
+      "env": {
+        "TASK_TRACKER_STORAGE_PATH": "C:/Projects/task_tracker/task-tracker-data.json"
+      }
+    }
+  }
+}
+

@@ -1,125 +1,68 @@
-# Опис процесу розробки Task Tracker
+# Development Process: Task Tracker
 
-## З чого почали?
+## 1. Starting Point and Planning
 
-Розробку почав з аналізу вимог та планування структури проєкту. Першим кроком було перевірка наявного проєкту - виявив, що вже існує базовий React + TypeScript проєкт на Vite. Це дозволило одразу перейти до створення функціональності замість налаштування інфраструктури.
+The development began with setting up a React + TypeScript project structure using Vite. The first step was to define the core data model - the `Task` interface with properties: `id`, `title`, `description`, `status`, `createdAt`, and `updatedAt`.
 
-## Як планували роботу?
+Planning followed a component-based approach: breaking the application into reusable components (`TaskForm`, `TaskList`, `TaskItem`, `SearchBar`) and organizing utilities separately. The initial plan focused on implementing CRUD operations with localStorage for data persistence, ensuring a simple yet functional solution without backend complexity.
 
-План розробки був структурований наступним чином:
-1. **Типи та інтерфейси** - створити TypeScript типи для задач
-2. **Утиліти** - реалізувати функції для роботи з localStorage
-3. **Компоненти** - створити UI компоненти (Form, Item, List)
-4. **Головна логіка** - інтегрувати все в App компонент
-5. **Стилізація** - додати CSS для сучасного дизайну
-6. **Документація** - створити всі необхідні документи
+## 2. Code Organization
 
-Такий підхід дозволив працювати послідовно, перевіряючи кожен етап перед переходом до наступного.
-
-## Як організували код?
-
-### Структура файлів
+The project structure follows React best practices:
 
 ```
 src/
-├── types/
-│   └── Task.ts              # Типи для задач
-├── utils/
-│   └── storage.ts            # Утиліти для localStorage
-├── components/
-│   ├── TaskForm.tsx          # Форма додавання/редагування
-│   ├── TaskItem.tsx          # Компонент окремої задачі
-│   └── TaskList.tsx          # Компонент списку задач
-├── App.tsx                   # Головний компонент з логікою
-└── main.tsx                  # Точка входу
+├── components/     # Reusable UI components
+├── types/          # TypeScript type definitions
+├── utils/          # Helper functions (storage)
+├── App.tsx         # Main application logic
+└── App.css         # Global styles
 ```
 
-### Чому обрано такий підхід?
+This structure was chosen for clarity and maintainability. Components are separated by responsibility, types are centralized, and utilities are isolated for easy testing and reuse. The main `App.tsx` manages state and coordinates between components, following React's unidirectional data flow pattern.
 
-1. **Розділення відповідальності**: Кожна папка має чітку роль - типи, утиліти, компоненти
-2. **Масштабованість**: Легко додавати нові компоненти або утиліти без зміни існуючої структури
-3. **Підтримуваність**: Чітке розділення спрощує знаходження та зміну коду
-4. **TypeScript-first**: Типи винесені окремо для перевикористання та кращої типізації
+## 3. Challenges and Solutions
 
-## Які були труднощі?
+**Challenge 1: Task Persistence Issues**
+Tasks were disappearing when creating new ones. The problem was caused by incorrect React `key` props that changed when tasks moved between statuses, causing React to re-render incorrectly. **Solution**: Changed keys to use stable `task.id` and implemented functional state updates (`setTasks((prevTasks) => ...)`).
 
-### Труднощі 1: Конфлікт стилів
+**Challenge 2: UI State Management**
+The search bar state wasn't resetting after adding tasks, making new tasks invisible. **Solution**: Added `setSearchQuery("")` to `handleAddTask` and `handleUpdateTask` to ensure all tasks are visible after operations.
 
-**Проблема**: Початкові стилі з Vite шаблону конфліктували з новими стилями Task Tracker, створюючи несподівану поведінку.
+**Challenge 3: TypeScript Import Errors**
+Vite was reporting import errors for the `Task` type. **Solution**: Changed to `import type` for type-only imports, ensuring proper TypeScript compilation.
 
-**Рішення**: Повністю переписав `index.css` та `App.css`, видаливши всі стилі з шаблону та створивши нові з нуля. Це забезпечило чистий старт без конфліктів.
+## 4. Future Improvements
 
-### Труднощі 2: Синхронізація з localStorage
+With more time, I would add:
 
-**Проблема**: Спочатку дані не зберігалися правильно - виникали проблеми з форматуванням JSON та обробкою помилок.
+- **Drag-and-drop functionality** for moving tasks between columns
+- **Task filtering** by status, date, or custom tags
+- **Export/Import** functionality to save tasks as JSON
+- **Dark/Light theme toggle** for better user experience
+- **Task priorities** and due dates
+- **Backend integration** for multi-user support and cloud sync
 
-**Рішення**: Додав обробку помилок у функціях `loadTasks()` та `saveTasks()`, що дозволило коректно обробляти випадки пошкодженого localStorage або відсутності даних.
+## 5. MCP Server Experience
 
-### Труднощі 3: Режим редагування
+I used two MCP Servers during development:
 
-**Проблема**: Форма не підтримувала правильно режим редагування - не заповнювалася початковими значеннями.
+**GitHub MCP Server**: Configured for repository management and automation, helping with version control and project organization.
 
-**Рішення**: Додав умовну логіку в `TaskForm` для перевірки наявності `task` prop та заповнення полів початковими значеннями через `useState`.
+**Custom Task Tracker MCP Server**: Created a custom MCP Server using TypeScript and the MCP SDK. The server provides 5 tools: `create_task`, `list_tasks`, `update_task_status`, `delete_task`, and `get_task_statistics`.
 
-## Що можна покращити?
+**Integration Process:**
 
-### Якби було більше часу, додав би:
+1. Set up Node.js project with TypeScript
+2. Implemented MCP protocol handlers using the SDK
+3. Created JSON file-based storage system
+4. Configured the server in `.mcp/task-tracker.json`
+5. Tested tools through MCP client
 
-1. **Drag-and-Drop**: Реалізацію перетягування задач між колонками статусів для кращого UX
-2. **Фільтрація та пошук**: Можливість шукати задачі за назвою або фільтрувати за статусом
-3. **Експорт/Імпорт**: Функцію експорту задач у JSON/CSV та імпорту з файлів
-4. **Теми**: Підтримку світлої та темної теми
-5. **Теги та категорії**: Можливість додавати теги до задач для кращої організації
-6. **Дата виконання**: Додавання дат дедлайнів та нагадувань
-7. **Тести**: Unit тести для компонентів та утиліт
-8. **PWA**: Перетворення на Progressive Web App для встановлення на пристрої
+**Challenges:**
 
-### Які функції розширив би:
+- Understanding the MCP protocol structure and request/response schemas
+- Configuring the server path correctly for Windows paths
+- Ensuring proper error handling for file operations
 
-- **Спільна робота**: Додав би можливість спільної роботи над задачами (потребує backend)
-- **Статистика**: Графіки та аналітика по продуктивності
-- **Повідомлення**: Систему нагадувань про задачі
-- **Архівування**: Можливість архівувати старі задачі
-
-## Досвід роботи з MCP
-
-### Який MCP Server використовувався?
-
-Для цього проєкту планувалося використання **GitHub MCP Server** для автоматизації роботи з репозиторієм. MCP Server дозволяє:
-- Автоматично створювати issues та pull requests
-- Моніторити CI/CD статус
-- Управляти репозиторієм через AI-інструменти
-
-### Як MCP допоміг у розробці?
-
-MCP Server дозволив би автоматизувати:
-- Створення документації через AI
-- Генерацію комітів з осмисленими повідомленнями
-- Автоматичне створення issues для відстеження задач
-
-### Що було складно при інтеграції?
-
-На етапі розробки основного функціоналу MCP Server не використовувався безпосередньо, оскільки фокус був на створенні самого додатку. Однак для майбутньої інтеграції важливо:
-- Правильно налаштувати конфігурацію MCP Server
-- Розуміти формат запитів та відповідей
-- Обробляти помилки при взаємодії з GitHub API
-
-### Якщо створювався власний MCP Server
-
-Якщо б створювався власний MCP Server для Task Tracker, він міг би:
-- Автоматично синхронізувати задачі з зовнішніми системами
-- Генерувати звіти по задачах
-- Інтегруватися з іншими інструментами управління проєктами
-
-Процес створення включав би:
-1. Визначення інструментів (tools), які потрібні
-2. Реалізацію сервера на TypeScript/JavaScript
-3. Налаштування конфігурації для підключення
-4. Тестування інтеграції з Cursor/Claude
-
-## Висновки
-
-Розробка Task Tracker пройшла успішно завдяки чіткому плануванню та структуруванню коду. Використання TypeScript забезпечило типобезпеку, а розділення на компоненти спростило підтримку. Основні виклики були пов'язані з інтеграцією стилів та синхронізацією даних, але всі вони були успішно вирішені.
-
-Проєкт демонструє можливість швидкої розробки функціонального додатку з використанням сучасних інструментів та підходів.
-
+The MCP Server enables AI tools to programmatically manage tasks, opening possibilities for automation, batch operations, and integration with other tools.

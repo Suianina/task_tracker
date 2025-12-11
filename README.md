@@ -16,6 +16,20 @@ Task Tracker allows you to create, edit, delete, and track the status of your ta
 - 🔍 **Search** - Search tasks by title or description
 - 💾 **Auto-save** - All data is automatically saved in localStorage
 
+## 📸 Screenshot
+
+<div align="center">
+  <img src="./docs/task-tracker-screenshot.png" alt="Task Tracker Application" width="800"/>
+  <p><em>Task Tracker - Main interface with three status columns, search functionality, and modern gradient design</em></p>
+</div>
+
+The application features:
+- **Three-column layout** for task organization (To Do, In Progress, Done)
+- **Search bar** for quick task filtering
+- **Modern gradient background** (dark blue to purple-blue)
+- **Color-coded task cards** with status indicators
+- **Responsive design** that works on all devices
+
 ## 🚀 Quick Start
 
 ### Requirements
