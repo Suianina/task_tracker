@@ -18,10 +18,9 @@ Task Tracker allows you to create, edit, delete, and track the status of your ta
 
 ## 📸 Screenshot
 
-<div align="center">
-  <img src="./docs/task-tracker-screenshot.png" alt="Task Tracker Application" width="800"/>
-  <p><em>Task Tracker - Main interface with three status columns, search functionality, and modern gradient design</em></p>
-</div>
+![Task Tracker Application](./docs/task-tracker-screenshot.png)
+
+*Task Tracker - Main interface with three status columns, search functionality, and modern gradient design*
 
 The application features:
 - **Three-column layout** for task organization (To Do, In Progress, Done)
