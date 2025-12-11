@@ -12,9 +12,11 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Load tasks from localStorage on mount
   useEffect(() => {
     const loadedTasks = loadTasks();
     setTasks(loadedTasks);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, []);
 
   useEffect(() => {
