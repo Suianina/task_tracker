@@ -33,7 +33,7 @@ export const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListPr
           <div className="tasks-container">
             {tasksByStatus[status].map((task) => (
               <TaskItem
-                key={`${status}-${task.id}`}
+                key={task.id}
                 task={task}
                 onEdit={onEdit}
                 onDelete={onDelete}

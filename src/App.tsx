@@ -26,6 +26,7 @@ function App() {
       updatedAt: Date.now(),
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
+    setEditingTask(null);
     setShowForm(false);
   };
 
