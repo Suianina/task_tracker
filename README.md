@@ -60,6 +60,7 @@ npm run lint
 - **[AI_WORKFLOW_DOCUMENTATION.md](./AI_WORKFLOW_DOCUMENTATION.md)** - Документація процесу розробки з AI
 - **[DEVELOPMENT_PROCESS.md](./DEVELOPMENT_PROCESS.md)** - Опис процесу розробки
 - **[MCP_INTEGRATION.md](./MCP_INTEGRATION.md)** - Документація по інтеграції MCP Server
+- **[MCP_SERVER_DOCUMENTATION.md](./MCP_SERVER_DOCUMENTATION.md)** - Повна документація MCP Server
 
 ## 🛠️ Технології
 
