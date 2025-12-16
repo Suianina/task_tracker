@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# MCP Configuration (contains sensitive tokens)
+mcp.json
+.mcp/github.json
+
+# Windows special files
+nul

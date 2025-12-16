@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import type { Task, TaskStatus } from "./types/Task";
 import { TaskForm } from "./components/TaskForm";
 import { TaskList } from "./components/TaskList";
@@ -11,10 +11,17 @@ function App() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     saveTasks(tasks);
   }, [tasks]);
+
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [showForm]);
 
   const handleAddTask = (
     taskData: Omit<Task, "id" | "createdAt" | "updatedAt">
@@ -25,10 +32,7 @@ function App() {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
-    setTasks((prevTasks) => {
-      const updatedTasks = [...prevTasks, newTask];
-      return updatedTasks;
-    });
+    setTasks((prevTasks) => [...prevTasks, newTask]);
     setEditingTask(null);
     setShowForm(false);
     setSearchQuery("");
@@ -111,7 +115,7 @@ function App() {
               </button>
             </>
           ) : (
-            <div className="form-container">
+            <div ref={formRef} className="form-container">
               <h2>{editingTask ? "Edit Task" : "New Task"}</h2>
               <TaskForm
                 task={editingTask || undefined}

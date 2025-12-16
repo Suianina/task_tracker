@@ -33,11 +33,13 @@ The MCP Server provides the following tools:
 Creates a new task in the Task Tracker.
 
 **Parameters:**
+
 - `title` (required): Task title
 - `description` (optional): Task description
 - `status` (optional): Task status - "To Do", "In Progress", or "Done" (default: "To Do")
 
 **Example:**
+
 ```json
 {
   "title": "Implement user authentication",
@@ -51,9 +53,11 @@ Creates a new task in the Task Tracker.
 Retrieves a list of all tasks, optionally filtered by status.
 
 **Parameters:**
+
 - `status` (optional): Filter by status - "To Do", "In Progress", or "Done"
 
 **Example:**
+
 ```json
 {
   "status": "In Progress"
@@ -65,10 +69,12 @@ Retrieves a list of all tasks, optionally filtered by status.
 Updates the status of an existing task.
 
 **Parameters:**
+
 - `taskId` (required): ID of the task to update
 - `status` (required): New status - "To Do", "In Progress", or "Done"
 
 **Example:**
+
 ```json
 {
   "taskId": "1234567890",
@@ -81,9 +87,11 @@ Updates the status of an existing task.
 Deletes a task by ID.
 
 **Parameters:**
+
 - `taskId` (required): ID of the task to delete
 
 **Example:**
+
 ```json
 {
   "taskId": "1234567890"
@@ -97,6 +105,7 @@ Retrieves statistics about tasks (count by status).
 **Parameters:** None
 
 **Response:**
+
 ```json
 {
   "total": 10,
@@ -116,16 +125,19 @@ Retrieves statistics about tasks (count by status).
 ### Setup
 
 1. Navigate to the MCP server directory:
+
 ```bash
 cd mcp-server
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the server:
+
 ```bash
 npm run build
 ```
@@ -268,5 +280,4 @@ MIT
 
 ## Contributing
 
-This MCP Server is part of the Task Tracker project. Contributions are welcome!
-
+This MCP Server is part of the Task Tracker project.
